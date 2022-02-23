@@ -2,19 +2,15 @@
   "name": "template-cli",
   "version": "0.1.0",
   "author": "tundera<https://github.com/tundera>",
-  "scripts": {
-    "dev": "esno -r dotenv/config -r tsconfig-paths/register src/index.ts",
-    "build": "tsup src/index.ts --dts --format cjs,esm",
-    "clean": "rimraf dist output.txt",
-    "release": "bumpp --tag --commit --push && npm publish",
-    "prepublishOnly": "yarn build"
-  },
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "tundera/template-cli"
   },
   "homepage": "https://github.com/tundera/template-cli#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "sideEffects": false,
   "exports": {
     ".": {
@@ -34,35 +30,44 @@
   "files": [
     "dist"
   ],
-  "bin": "bin/cli.js",
+  "bin": "./bin/cli.js",
+  "scripts": {
+    "dev": "esno -r dotenv/config -r tsconfig-paths/register src/index.ts",
+    "build": "tsup src/index.ts --dts --format cjs,esm",
+    "lint": "eslint --ext .ts,.js .",
+    "clean": "rimraf dist output.txt",
+    "release": "bumpp --tag --commit --push && npm publish",
+    "prepublishOnly": "yarn build",
+    "postinstall": "husky install",
+    "prepack": "pinst --disable",
+    "postpack": "pinst --enable",
+    "commit": "cz"
+  },
+  "dependencies": {
+    "cac": "^6.7.12"
+  },
   "devDependencies": {
-    "@antfu/utils": "0.5.0",
     "@types/eslint": "^8.4.1",
-    "@types/fs-extra": "9.0.13",
     "@types/node": "17.0.19",
-    "@types/node-fetch": "2.6.1",
-    "@types/sharp": "0.29.5",
-    "@types/yargs": "17.0.8",
     "@typescript-eslint/eslint-plugin": "^5.12.1",
     "@typescript-eslint/parser": "^5.12.1",
     "bumpp": "^7.1.1",
+    "commitizen": "^4.2.4",
+    "cz-emoji": "^1.3.1",
     "dotenv": "16.0.0",
     "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-prettier": "^4.0.0",
     "esno": "0.14.1",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.3.4",
+    "pinst": "^3.0.0",
     "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3",
     "rimraf": "^3.0.2",
     "tsconfig-paths": "^3.12.0",
     "tsup": "5.11.13",
     "typescript": "^4.5.5"
-  },
-  "dependencies": {
-    "cac": "^6.7.12",
-    "fs-extra": "^10.0.1",
-    "image-data-uri": "^2.0.1",
-    "node-fetch": "3",
-    "sharp": "^0.30.1"
   },
   "release": {
     "branches": [
@@ -79,6 +84,16 @@
         "prerelease": true
       }
     ]
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "yarn lint --fix"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-emoji"
+    }
   },
   "packageManager": "yarn@3.2.0"
 }
