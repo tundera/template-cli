@@ -1,40 +1,34 @@
-import path from 'path'
-import fs from 'fs'
+import { loadConfig as _loadConfig } from 'unconfig'
+import { loadEnv } from './env'
+import type { ProgramConfig } from './types'
 
-import type { Config } from 'types'
-
-export const presetConfig: Required<Config> = {
-  output: 'output.txt',
+export const defaultConfig: ProgramConfig = {
+  name: 'program',
+  outputDir: './program',
+  cacheFile: '.cache.json',
+  formats: ['json', 'txt'],
 }
 
-export function resolveConfig(config: Config) {
-  const userConfig = loadUserConfig()
+export function defineConfig(config: ProgramConfig) {
+  return config
+}
+
+export async function loadConfig(inlineConfig?: ProgramConfig) {
+  const env = loadEnv()
+
+  const { config = {} } = await _loadConfig<ProgramConfig>({
+    sources: [
+      {
+        files: 'program.config',
+      },
+    ],
+    merge: true,
+  })
+
   return {
-    ...presetConfig,
+    ...defaultConfig,
+    ...env,
     ...config,
-    ...userConfig,
-  }
-}
-
-function loadUserConfig(configRoot: string = process.cwd()) {
-  let resolvedPath: string | undefined
-
-  const jsconfigFile = path.resolve(configRoot, 'template.config.js')
-  if (fs.existsSync(jsconfigFile)) {
-    resolvedPath = jsconfigFile
-  }
-
-  if (!resolvedPath) {
-    console.log('No config file found.')
-    return null
-  }
-
-  try {
-    const userConfig: Config | undefined = require(resolvedPath)
-    console.log('User config loaded ')
-
-    return userConfig
-  } catch (e) {
-    throw e
-  }
+    ...inlineConfig,
+  } as Required<ProgramConfig>
 }

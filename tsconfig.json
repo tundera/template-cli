@@ -1,18 +1,16 @@
 {
   "compilerOptions": {
-    "target": "es2021",
+    "target": "esnext",
     "module": "esnext",
     "lib": ["esnext"],
-    "strict": true,
-    "esModuleInterop": true,
     "moduleResolution": "node",
-    "skipLibCheck": true,
-    "noUnusedLocals": true,
-    "noImplicitAny": true,
-    "allowJs": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "strictNullChecks": true,
     "resolveJsonModule": true,
+    "skipDefaultLibCheck": true,
     "baseUrl": "."
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", ".eslintrc.js"],
   "exclude": ["node_modules"]
 }

@@ -4,8 +4,8 @@
 
 ```sh
 # env
-TEMPLATE_LOGIN=<login>
-TEMPLATE_TOKEN=<token>
+PROGRAM_LOGIN=<login>
+PROGRAM_TOKEN=<token>
 
 # sh
 npx template-cli
@@ -13,7 +13,7 @@ npx template-cli
 
 ## Config
 
-Support config file `template.config.js`, for more details read [types.ts](./types/index.ts).
+Support config file `cli.config.js`, for more details read [types.ts](./src/types.ts).
 
 ```js
 module.exports = {
