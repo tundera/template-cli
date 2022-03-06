@@ -110,5 +110,5 @@
       "path": "cz-emoji"
     }
   },
-  "packageManager": "pnpm@6.32.1"
+  "packageManager": "pnpm@6.32.3"
 }
