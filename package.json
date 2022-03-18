@@ -40,7 +40,7 @@
     "dev": "esno src/cli.ts",
     "lint": "eslint --ext .ts,.js .",
     "typecheck": "tsc --noEmit",
-    "test": "vitest",
+    "test": "vitest run",
     "clean": "rimraf dist program",
     "release": "bumpp --commit --push --tag && pnpm publish",
     "prepublishOnly": "pnpm build",
