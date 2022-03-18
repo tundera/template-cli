@@ -26,7 +26,7 @@ cli.command(
       .option('name', {
         type: 'string',
       })
-      .options('outputDir', {
+      .option('outputDir', {
         alias: ['o', 'dir'],
         type: 'string',
       })
