@@ -32,7 +32,7 @@ specifiers:
   unbuild: 0.7.0
   unconfig: 0.3.2
   vitest: 0.7.4
-  yargs: 17.3.1
+  yargs: 17.5.1
 
 dependencies:
   consola: 2.15.3
@@ -41,7 +41,7 @@ dependencies:
   ohmyfetch: 0.4.15
   picocolors: 1.0.0
   unconfig: 0.3.2
-  yargs: 17.3.1
+  yargs: 17.5.1
 
 devDependencies:
   '@types/eslint': 8.4.1
@@ -4283,8 +4283,8 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
-  /yargs/17.3.1:
-    resolution: {integrity: sha512-WUANQeVgjLbNsEmGk20f+nlHgOqzRFpiGWVaBrYGYIGANIIu3lWjoyi0fNlFmJkvfhCZ6BXINe7/W2O2bV4iaA==}
+  /yargs/17.5.1:
+    resolution: {integrity: sha512-t6YAJcxDkNX7NFYiVtKvWUz8l+PaKTLiL63mJYWR2GnHq2gjEWISzsLp9wg3aY36dY1j+gfIEL3pIF+XlJJfbA==}
     engines: {node: '>=12'}
     dependencies:
       cliui: 7.0.4
