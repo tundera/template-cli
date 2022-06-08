@@ -54,7 +54,7 @@
     "ohmyfetch": "0.4.15",
     "picocolors": "1.0.0",
     "unconfig": "0.3.2",
-    "yargs": "17.3.1"
+    "yargs": "17.5.1"
   },
   "devDependencies": {
     "@types/eslint": "8.4.1",
