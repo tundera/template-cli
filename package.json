@@ -51,7 +51,7 @@
     "consola": "2.15.3",
     "dotenv": "16.0.1",
     "fs-extra": "10.0.1",
-    "ohmyfetch": "0.4.15",
+    "ohmyfetch": "0.4.21",
     "picocolors": "1.0.0",
     "unconfig": "0.3.2",
     "yargs": "17.3.1"
